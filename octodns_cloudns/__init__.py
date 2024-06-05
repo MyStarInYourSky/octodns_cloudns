@@ -260,7 +260,7 @@ class ClouDNSProvider(BaseProvider):
         return {
             "ttl": records[0]["ttl"],
             "type": _type,
-            "value": records[0]["record"].replace(';', '\\;') + ".",
+            'values': [value['Value'].replace(';', '\\;') for value in records],
         }
 
 
