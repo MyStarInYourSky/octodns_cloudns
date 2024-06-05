@@ -384,6 +384,7 @@ class ClouDNSProvider(BaseProvider):
             if(response['status'] == 'Failed'):
                 e = ClouDNSClientUnknownDomainName(f"{response['status']} : {response['statusDescription']}")
                 e.__cause__ = None
+                self.log.info(response)
                 raise e
             self.log.info("populate: zone has been successfully created")
             records_data = self._client.zone_records(zone.name[:-1])
